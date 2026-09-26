@@ -1,0 +1,151 @@
+/* ============================================ */
+/* FOOTER COMPONENT — ESTILOS                   */
+/* ============================================ */
+
+.innova-footer {
+  background: #0d0d0f;
+  color: #fff;
+  margin-top: auto;
+  padding-top: 4rem;
+  padding-bottom: 1.25rem;
+  font-family: inherit;
+}
+
+/* ---------- Marca (igual al logo del navbar) ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+
+.brand-bar {
+  display: inline-block;
+  width: 5px;
+  height: 22px;
+  background: #5b4cf7;
+  border-radius: 999px;
+}
+
+.brand-text {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: #fff; /* blanco para el fondo oscuro del footer */
+}
+
+.brand-desc {
+  color: #9a9aa5;
+  font-size: .8rem;
+  line-height: 1.45;
+  max-width: 26rem;
+}
+
+/* ---------- Encabezados de columna ---------- */
+.footer-heading {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- Enlaces genéricos ---------- */
+.footer-link {
+  color: #8f8f9a;
+  font-size: .78rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.innova-footer .footer-link:hover {
+  color: #fff;
+}
+
+/* Lista EXPLORAR: interlineado compacto */
+.footer-links li + li {
+  margin-top: .5rem;
+}
+
+/* ---------- Contacto oficial ---------- */
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+}
+
+@media (max-width: 991.98px) {
+  .contact-list li {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.contact-list li + li {
+  margin-top: .5rem;
+}
+
+.contact-icon {
+  color: #5b4cf7;
+  font-size: .95rem;
+  margin-top: .1rem;
+}
+
+/* ---------- Separador ---------- */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, .12); /* gris muy tenue */
+  margin: 3.5rem 0 1.5rem;
+}
+
+/* ---------- Barra legal inferior ---------- */
+.footer-bottom {
+  font-size: .75rem;
+}
+
+.footer-bottom small {
+  color: #fff;
+}
+
+.footer-legal {
+  color: rgba(255, 255, 255, .55);
+  font-size: .75rem;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.footer-legal:hover {
+  color: #fff;
+}
+
+/* ---------- Responsive (mobile) ---------- */
+@media (max-width: 991.98px) {
+  .innova-footer {
+    padding-top: 3rem;
+    text-align: center; /* centra toda la sección en móvil */
+  }
+
+  .brand {
+    justify-content: center; /* centra barra + logo horizontalmente */
+  }
+
+  .brand-desc {
+    max-width: 100%;
+  }
+
+  .footer-divider {
+    margin: 2.75rem auto 1.25rem; /* centrar la raya */
+    width: 100%;
+  }
+
+  .footer-bottom {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-list li {
+    justify-content: center; /* centro los iconos + texto de contacto */
+  }
+}

@@ -1,0 +1,98 @@
+/* ============================================
+   FAVORITOS — estilos locales
+   ============================================ */
+:host {
+  --innova-primary: #5b4cf7;
+}
+
+.favoritos-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--innova-primary);
+}
+
+.favoritos-label .bi-heart-fill {
+  color: #e11d48;
+}
+
+.favoritos-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #17162e;
+  letter-spacing: -0.02em;
+}
+
+.btn-favorito {
+  background: var(--innova-primary);
+  border: 1px solid var(--innova-primary);
+  color: #fff;
+  border-radius: 0.65rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.9rem;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.btn-favorito:hover,
+.btn-favorito:focus-visible {
+  background: #4a3ce0;
+  border-color: #4a3ce0;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(91, 76, 247, 0.35);
+}
+
+.favorita-card {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.favorita-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.14);
+}
+
+.favorita-img {
+  height: 12rem;
+  object-fit: cover;
+}
+
+.favorita-categoria {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2rem;
+  background: rgba(91, 76, 247, 0.1);
+  color: var(--innova-primary);
+  margin-bottom: 0.6rem;
+}
+
+.favorita-titulo {
+  font-weight: 600;
+  line-height: 1.35;
+  color: #17162e;
+}
+
+.favorita-descripcion {
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.favorita-footer {
+  background: transparent;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 0.9rem 1.25rem;
+}
+
+.favoritos-vacio {
+  border: 2px dashed rgba(15, 23, 42, 0.12);
+  border-radius: 1.25rem;
+}

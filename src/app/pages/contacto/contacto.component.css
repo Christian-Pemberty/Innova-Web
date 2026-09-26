@@ -1,0 +1,69 @@
+/* ============================================
+   CONTACTO — estilos locales
+   ============================================ */
+:host {
+  --innova-primary: #5b4cf7;
+}
+
+.contacto-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--innova-primary);
+}
+
+.contacto-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #17162e;
+  letter-spacing: -0.02em;
+}
+
+.btn-contacto {
+  display: inline-flex;
+  background: var(--innova-primary);
+  border: 1px solid var(--innova-primary);
+  color: #fff;
+  border-radius: 0.65rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.9rem;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.btn-contacto:hover,
+.btn-contacto:focus-visible {
+  background: #4a3ce0;
+  border-color: #4a3ce0;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(91, 76, 247, 0.35);
+}
+
+.contacto-info {
+  height: 100%;
+  background: rgba(91, 76, 247, 0.05);
+  border: 1px solid rgba(91, 76, 247, 0.15);
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+
+.contacto-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 0.85rem;
+  background: rgba(91, 76, 247, 0.12);
+  color: var(--innova-primary);
+}
+
+.contacto-form {
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
+}

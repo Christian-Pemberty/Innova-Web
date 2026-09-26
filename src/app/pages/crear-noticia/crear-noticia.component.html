@@ -1,0 +1,122 @@
+<!-- ============================================ -->
+<!-- CREAR NOTICIA                               -->
+<!-- ============================================ -->
+<section class="crear-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+        <!-- Encabezado -->
+        <div class="crear-header text-center mb-5">
+          <span class="crear-label d-inline-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-pencil-square" aria-hidden="true"></i>
+            {{ idiomas.t('crear.label') }}
+          </span>
+          <h1 class="crear-title mb-2">{{ idiomas.t('crear.title') }}</h1>
+          <p class="crear-subtitle text-secondary mb-0">
+            {{ idiomas.t('crear.subtitulo') }}
+          </p>
+        </div>
+
+        <!-- Formulario -->
+        <form class="crear-form card" (ngSubmit)="onSubmit(crearForm)" #crearForm="ngForm" aria-label="Formulario de creación de noticia">
+          <div class="card-body crear-body">
+            <div class="mb-4">
+              <label for="titulo" class="form-label crear-label-campo">
+                <i class="bi bi-type-bold me-1" aria-hidden="true"></i>
+                {{ idiomas.t('crear.titulo') }}
+              </label>
+              <input
+                type="text"
+                class="form-control crear-input"
+                id="titulo"
+                name="titulo"
+                [(ngModel)]="titulo"
+                [attr.placeholder]="idiomas.t('home.phTitulo')"
+                required
+                maxlength="120"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="categoria" class="form-label crear-label-campo">
+                <i class="bi bi-tags me-1" aria-hidden="true"></i>
+                {{ idiomas.t('crear.categoria') }}
+              </label>
+              <select
+                class="form-select crear-select"
+                id="categoria"
+                name="categoria"
+                [(ngModel)]="selectedCategoria"
+                required
+              >
+                <option value="" disabled>{{ idiomas.t('crear.categoriaPlaceholder') }}</option>
+                @for (cat of categorias; track cat) {
+                  <option [value]="cat">{{ cat }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="descripcion" class="form-label crear-label-campo">
+                <i class="bi bi-text-paragraph me-1" aria-hidden="true"></i>
+                {{ idiomas.t('crear.descripcion') }}
+              </label>
+              <textarea
+                class="form-control crear-descripcion"
+                id="descripcion"
+                name="descripcion"
+                [(ngModel)]="descripcion"
+                [attr.placeholder]="idiomas.t('crear.descripcionPlaceholder')"
+                rows="4"
+                maxlength="280"
+                (input)="onDescripcionChange($event)"
+              ></textarea>
+              <div class="crear-contador text-end">
+                <span class="text-secondary small">{{ longitudDescripcion }}/280</span>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label for="imagen" class="form-label crear-label-campo">
+                <i class="bi bi-image me-1" aria-hidden="true"></i>
+                {{ idiomas.t('crear.imagen') }}
+              </label>
+              <input
+                type="url"
+                class="form-control crear-input"
+                id="imagen"
+                name="imagen"
+                [(ngModel)]="imagenUrl"
+                [attr.placeholder]="idiomas.t('crear.imagenPlaceholder')"
+                autocomplete="off"
+              />
+              <div class="crear-ayuda">
+                {{ idiomas.t('crear.ayuda') }}
+              </div>
+            </div>
+
+            <!-- Confirmación temporal -->
+            @if (publicada()) {
+              <div class="crear-feedback d-flex align-items-center gap-2" role="status">
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                {{ idiomas.tConParametros('crear.feedback', { titulo: publicada() ?? '' }) }}
+              </div>
+            }
+          </div>
+
+          <div class="card-footer crear-footer d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <a routerLink="/" class="btn crear-btn-volver text-decoration-none">
+              <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>
+              {{ idiomas.t('crear.volver') }}
+            </a>
+            <button type="submit" class="btn crear-btn-publicar" [disabled]="!crearForm.valid">
+              <i class="bi bi-send me-1" aria-hidden="true"></i>
+              {{ idiomas.t('crear.publicar') }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

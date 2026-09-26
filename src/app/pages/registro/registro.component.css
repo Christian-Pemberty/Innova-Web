@@ -1,0 +1,68 @@
+/* ============================================ */
+/* REGISTRO — Página de aterrizaje              */
+/* ============================================ */
+
+.registro-hero {
+  background: linear-gradient(160deg, #f8f7ff 0%, #eef0ff 40%, #ffffff 100%);
+}
+
+.registro-label {
+  background: #f0eeff;
+  color: #5b4cf7;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: .35rem .85rem;
+  border-radius: .5rem;
+}
+
+.registro-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.2;
+}
+
+.registro-subtitle {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
+
+.register-btn-primary {
+  background: #5b4cf7;
+  color: #ffffff;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: .85rem 2rem;
+  transition: background .2s ease, transform .18s ease, box-shadow .2s ease;
+}
+.register-btn-primary:hover {
+  background: #4a3ce4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(91, 76, 247, .35);
+  color: #ffffff;
+}
+
+.register-link-existing {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: .95rem;
+  font-weight: 500;
+  color: #5b4cf7;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.register-link-existing:hover {
+  color: #4a3ce4;
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-btn-primary { transition: none; }
+  .register-link-existing { transition: none; }
+}

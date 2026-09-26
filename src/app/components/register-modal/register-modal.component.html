@@ -1,0 +1,149 @@
+<!-- ===== Register Modal (off-canvas right) ===== -->
+@if (abierto()) {
+<div class="modal-fondo" role="dialog" aria-modal="true" aria-labelledby="reg-titulo" (mousedown)="onOverlayClick($event)">
+
+  <div class="card register-card shadow-lg animate-in">
+    <!-- Header -->
+    <div class="card-header register-header d-flex align-items-center justify-content-between border-0 pb-0 pt-4 px-4 px-md-5">
+      <div>
+        <span class="register-label d-inline-flex align-items-center gap-2 mb-1">
+          <i class="bi bi-person-plus-fill" aria-hidden="true"></i>
+          REGÍSTRATE
+        </span>
+        <h2 id="reg-titulo" class="register-title mb-0">Únete a Innova</h2>
+      </div>
+      <button type="button"
+              class="btn-close register-x"
+              aria-label="Cerrar"
+              [disabled]="enviando()"
+              (click)="cerrar()">
+      </button>
+    </div>
+
+    <!-- Body / Form -->
+    <form class="register-form card-body px-4 px-md-5 py-3"
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          novalidate>
+
+      <!-- Nombre completo -->
+      <div class="mb-3">
+        <label for="reg-nombre" class="form-label register-label-campo">
+          <i class="bi bi-person me-1" aria-hidden="true"></i>
+          Nombre completo <span class="text-danger">*</span>
+        </label>
+        <input type="text"
+               class="form-control register-input"
+               id="reg-nombre"
+               formControlName="nombre"
+               placeholder="Ej: María López"
+               required
+               maxlength="80"
+               autocomplete="name"
+               [class.is-invalid]="errorDe('nombre')" />
+        @if (errorDe('nombre')) {
+          <div class="invalid-feedback">{{ mensajeError('nombre') }}</div>
+        }
+        @if (!errorDe('nombre')) {
+          <div class="register-ayuda mt-1">Tu nombre tal como aparecerá en la comunidad.</div>
+        }
+      </div>
+
+      <!-- Correo electrónico -->
+      <div class="mb-3">
+        <label for="reg-correo" class="form-label register-label-campo">
+          <i class="bi bi-envelope me-1" aria-hidden="true"></i>
+          Correo electrónico <span class="text-danger">*</span>
+        </label>
+        <input type="email"
+               class="form-control register-input"
+               id="reg-correo"
+               formControlName="correo"
+               placeholder="tu@correo.com"
+               required
+               maxlength="120"
+               autocomplete="email"
+               [class.is-invalid]="errorDe('correo')" />
+        @if (errorDe('correo')) {
+          <div class="invalid-feedback">{{ mensajeError('correo') }}</div>
+        }
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-3 position-relative">
+        <label for="reg-contrasena" class="form-label register-label-campo">
+          <i class="bi bi-lock me-1" aria-hidden="true"></i>
+          Contraseña <span class="text-danger">*</span>
+        </label>
+        <div class="input-group register-input-group">
+          <input [type]="mostrarClave() ? 'text' : 'password'"
+                 class="form-control register-input"
+                 id="reg-contrasena"
+                 formControlName="contrasena"
+                 placeholder="Mínimo 8 caracteres"
+                 required
+                 minlength="8"
+                 maxlength="120"
+                 autocomplete="new-password"
+                 [class.is-invalid]="errorDe('contrasena')" />
+          <button type="button"
+                  class="btn register-toggle"
+                  aria-label="{{ mostrarClave() ? 'Ocultar contraseña' : 'Mostrar contraseña' }}"
+                  (click)="toggleClave()">
+            <i class="bi" [class.bi-eye-fill]="mostrarClave()" [class.bi-eye-slash-fill]="!mostrarClave()"></i>
+          </button>
+        </div>
+        @if (errorDe('contrasena')) {
+          <div class="invalid-feedback mt-1">{{ mensajeError('contrasena') }}</div>
+        } @else {
+          <div class="register-ayuda mt-2">Usa al menos 8 caracteres, con letras y números.</div>
+        }
+      </div>
+
+      <!-- Rol / Interés prioritario -->
+      <div class="mb-4">
+        <label for="reg-rol" class="form-label register-label-campo">
+          <i class="bi bi-tag me-1" aria-hidden="true"></i>
+          Rol / Interés prioritario <span class="text-danger">*</span>
+        </label>
+        <select class="form-select register-select"
+                id="reg-rol"
+                formControlName="rol"
+                required
+                [class.is-invalid]="errorDe('rol')">
+          <option value="" disabled>Selecciona una opción</option>
+          @for (r of roles; track r) {
+            <option [value]="r">{{ r }}</option>
+          }
+        </select>
+        @if (errorDe('rol')) {
+          <div class="invalid-feedback">{{ mensajeError('rol') }}</div>
+        }
+      </div>
+
+      <!-- Botones -->
+      <div class="register-footer d-flex flex-wrap align-items-center justify-content-between gap-2 pt-1">
+        <button type="button"
+                class="btn register-btn-limpiar"
+                [disabled]="enviando()"
+                (click)="cerrar()">
+          <i class="bi bi-x-lg me-1" aria-hidden="true"></i>
+          Cerrar
+        </button>
+        <button type="submit"
+                class="btn register-btn-crear"
+                [disabled]="form.invalid || enviando()">
+          @if (enviando()) {
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Creando…
+          } @else {
+            <i class="bi bi-person-plus me-1" aria-hidden="true"></i>
+            Crear Cuenta
+          }
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+}

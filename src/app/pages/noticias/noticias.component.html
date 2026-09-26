@@ -1,0 +1,68 @@
+<!-- ============================================ -->
+<!-- NOTICIAS — ARCHIVO COMPLETO                 -->
+<!-- ============================================ -->
+<section class="noticias-section py-5">
+  <div class="container">
+    <!-- Encabezado -->
+    <div class="row align-items-end mb-5">
+      <div class="col-lg-8 mb-3 mb-lg-0">
+        <span class="noticias-label d-inline-flex align-items-center gap-2 mb-2">
+          <i class="bi bi-newspaper" aria-hidden="true"></i>
+          ARCHIVO COMPLETO
+        </span>
+        <h1 class="noticias-title mb-2">Todas las Noticias</h1>
+        <p class="text-secondary mb-0">
+          El archivo completo de Innova: educativas, tecnológicas, turísticas y comerciales.
+        </p>
+      </div>
+      <div class="col-lg-4 d-grid d-lg-none mb-3 mb-lg-0">
+        <a routerLink="/" class="btn btn-noticia">
+          <i class="bi bi-house-door me-1"></i>
+          Volver al inicio
+        </a>
+      </div>
+      <div class="col-lg-4 text-lg-end d-none d-lg-block">
+        <a routerLink="/" class="btn btn-noticia">
+          <i class="bi bi-house-door me-1"></i>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+
+    @if (cargando()) {
+      <!-- Indicador de carga: primera visita, noticias.json aún en camino. -->
+      <div class="text-center py-5" role="status" aria-live="polite">
+        <div class="spinner-border text-primary" aria-hidden="true"></div>
+        <p class="text-secondary mt-3 mb-0">Cargando el archivo de noticias…</p>
+      </div>
+    } @else if (noticias().length > 0) {
+      <p class="mb-4" role="status">
+        {{ noticias().length }} noticia{{ noticias().length !== 1 ? 's' : '' }} publicada{{ noticias().length !== 1 ? 's' : '' }}
+      </p>
+      <!-- Grid de tarjetas -->
+      <div class="row g-4">
+        @for (noticia of noticias(); track noticia.id) {
+          <div class="col-12 col-md-6 col-lg-4">
+            <app-news-card
+              [noticia]="noticia"
+              (toggleFavorito)="service.toggleFavorito($event)"
+              (eliminar)="onEliminar($event)"
+            />
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- Estado vacío -->
+      <div class="noticias-vacio text-center py-5">
+        <i class="bi bi-newspaper display-4 text-secondary mb-3 d-block" aria-hidden="true"></i>
+        <h2 class="h4 text-secondary mb-2">Todavía no hay noticias</h2>
+        <p class="text-secondary mb-4">
+          La redacción aún no ha publicado contenido. ¡Sé quien publique la primera!
+        </p>
+        <a routerLink="/crear-noticia" class="btn btn-noticia">
+          Crear la primera noticia
+        </a>
+      </div>
+    }
+  </div>
+</section>

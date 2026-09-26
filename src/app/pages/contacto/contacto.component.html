@@ -1,0 +1,139 @@
+<!-- ============================================ -->
+<!-- CONTACTO                                    -->
+<!-- ============================================ -->
+<section class="contacto-section py-5">
+  <div class="container">
+    <!-- Encabezado -->
+    <div class="row align-items-end mb-5">
+      <div class="col-lg-8 mb-3 mb-lg-0">
+        <span class="contacto-label d-inline-flex align-items-center gap-2 mb-2">
+          <i class="bi bi-envelope-heart" aria-hidden="true"></i>
+          {{ idiomas.t('contacto.label') }}
+        </span>
+        <h1 class="contacto-title mb-2">{{ idiomas.t('contacto.title') }}</h1>
+        <p class="text-secondary mb-0">
+          {{ idiomas.t('contacto.subtitulo') }}
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a routerLink="/" class="btn btn-contacto">
+          <i class="bi bi-house-door me-1"></i>
+          {{ idiomas.t('contacto.volver') }}
+        </a>
+      </div>
+    </div>
+
+    <div class="row g-5 align-items-stretch">
+      <!-- Datos de contacto -->
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="contacto-info">
+          <h2 class="h5 fw-semibold mb-4">{{ idiomas.t('contacto.redaccion') }}</h2>
+
+          <ul class="list-unstyled d-flex flex-column gap-4 mb-0">
+            <li class="d-flex align-items-start gap-3">
+              <span class="contacto-icono" aria-hidden="true">
+                <i class="bi bi-envelope-fill"></i>
+              </span>
+              <div>
+                <p class="text-secondary small mb-1">{{ idiomas.t('contacto.correo') }}</p>
+                <a class="fw-semibold text-decoration-none" href="mailto:{{ redaccion.email }}">
+                  {{ redaccion.email }}
+                </a>
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-3">
+              <span class="contacto-icono" aria-hidden="true">
+                <i class="bi bi-telephone-fill"></i>
+              </span>
+              <div>
+                <p class="text-secondary small mb-1">{{ idiomas.t('contacto.telefono') }}</p>
+                <span class="fw-semibold">{{ redaccion.celular }}</span>
+              </div>
+            </li>
+            <li class="d-flex align-items-start gap-3">
+              <span class="contacto-icono" aria-hidden="true">
+                <i class="bi bi-geo-alt-fill"></i>
+              </span>
+              <div>
+                <p class="text-secondary small mb-1">{{ idiomas.t('contacto.ubicacion') }}</p>
+                <span class="fw-semibold">{{ redaccion.ciudad }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="col-lg-7">
+        <form class="contacto-form" #contactoForm="ngForm" (ngSubmit)="onEnvio(contactoForm)">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">{{ idiomas.t('contacto.nombre') }}</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                [ngModel]
+                placeholder="{{ idiomas.t('contacto.nombre') }}"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">{{ idiomas.t('contacto.email') }}</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [ngModel]
+                placeholder="tu@correo.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <div class="col-12">
+              <label for="asunto" class="form-label">{{ idiomas.t('contacto.asunto') }}</label>
+              <input
+                type="text"
+                class="form-control"
+                id="asunto"
+                name="asunto"
+                [ngModel]
+                placeholder="{{ idiomas.t('contacto.asunto') }}"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-12">
+              <label for="mensaje" class="form-label">{{ idiomas.t('contacto.mensaje') }}</label>
+              <textarea
+                class="form-control"
+                id="mensaje"
+                name="mensaje"
+                [ngModel]
+                placeholder="{{ idiomas.t('contacto.mensaje') }}"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-contacto align-items-center justify-content-center">
+                {{ idiomas.t('contacto.enviar') }}
+                <i class="bi bi-send ms-2" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          @if (enviado()) {
+            <p class="mt-3 mb-0 d-flex align-items-center gap-2" role="status">
+              <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+              {{ enviado() }}
+            </p>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

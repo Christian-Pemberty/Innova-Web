@@ -1,0 +1,22 @@
+<!-- ============================================ -->
+<!-- REGISTRO — Página de aterrizaje              -->
+<!-- ============================================ -->
+<section class="registro-hero d-flex align-items-center min-vh-100 text-center">
+  <div class="container">
+    <span class="registro-label d-inline-flex align-items-center gap-2 mb-3">
+      <i class="bi bi-star" aria-hidden="true"></i>
+      ÚNETE A INNOVA
+    </span>
+    <h1 class="registro-title mb-3">Comparte, aprende y crece con nosotros.</h1>
+    <p class="registro-subtitle text-secondary mb-4">
+      Crea tu cuenta gratuitamente, conecta con otros perfiles innovadores de Puebla y accede a contenido personalizado.
+    </p>
+    <button type="button" class="btn register-btn-primary" (click)="onAbrirModal()">
+      <i class="bi bi-person-plus me-2" aria-hidden="true"></i>
+      Crear mi cuenta ahora
+    </button>
+    <a routerLink="/iniciar-sesion" class="register-link-existing" (click)="onAbrirLogin(); $event.preventDefault()">
+      ¿Ya tienes cuenta? Inicia sesión
+    </a>
+  </div>
+</section>

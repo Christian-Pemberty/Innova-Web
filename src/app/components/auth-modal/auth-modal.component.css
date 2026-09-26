@@ -1,0 +1,286 @@
+/* ============================================ */
+/* AUTH MODAL — ESTILOS INNOVA               */
+/* ============================================ */
+
+/* Overlay oscuro con blur */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(15, 15, 30, .55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Tarjeta del modal */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 1.25rem;
+  border: none;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+@keyframes login-in {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)     scale(    1); }
+}
+.animate-in { animation: login-in .32s ease both; }
+
+/* ---------- Header ---------- */
+.login-header {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.login-label {
+  background: #f0eeff;
+  color: #5b4cf7;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: .3rem .75rem;
+  border-radius: .5rem;
+}
+.login-label i {
+  font-size: .85rem;
+}
+
+.login-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.65rem;
+  color: #1a1a2e;
+}
+
+/* Botón cerrar (X) estilizado */
+.login-x {
+  opacity: .55;
+  transition: opacity .2s ease;
+}
+.login-x:hover,
+.login-x:focus-visible {
+  opacity: 1;
+  background: #f0eeff !important;
+}
+
+/* ---------- Mensaje de estado ---------- */
+.login-msg {
+  margin: 0 -1px;
+  padding: .65rem .75rem .65rem calc(.75rem + 1px);
+  font-size: .85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.login-msg-exito {
+  background: #f0ffe8;
+  color: #1a6b38;
+  border-bottom: 1.5px solid #ccefa3;
+}
+.login-msg-error {
+  background: #fff0f0;
+  color: #b91c1c;
+  border-bottom: 1.5px solid #fca5a5;
+}
+
+/* ---------- Formulario ---------- */
+.login-label-campo {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: .35rem;
+}
+
+.login-input,
+.login-select {
+  border: 1.5px solid #e8e8f0;
+  border-radius: .75rem;
+  padding: .65rem .9rem;
+  font-size: .92rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.login-input:focus,
+.login-select:focus {
+  border-color: #5b4cf7;
+  box-shadow: 0 0 0 3px rgba(91, 76, 247, .18);
+  outline: none;
+}
+
+/* Input-group para contrasena */
+.login-input-group {
+  position: relative;
+}
+.login-input-group .login-input {
+  padding-right: 2.8rem;
+}
+.login-toggle {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  transition: color .2s ease;
+  padding: .65rem .7rem;
+}
+.login-toggle:hover,
+.login-toggle:focus-visible {
+  color: #5b4cf7;
+}
+
+/* ---------- Tabs ---------- */
+.login-tabs {
+  border-bottom: 1.5px solid #e8e8f0;
+  padding-bottom: 0;
+}
+.login-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  color: #6b7280;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .6rem .5rem;
+  transition: color .2s ease, border-color .2s ease;
+}
+.login-tab:hover {
+  color: #5b4cf7;
+}
+.login-tab-activa {
+  color: #5b4cf7;
+  border-bottom-color: #5b4cf7;
+}
+
+/* ---------- Estado inválido (validación) ---------- */
+.login-input.is-invalid,
+.login-select.is-invalid {
+  border-color: #dc3545;
+  background-image: none;
+}
+.login-input.is-invalid:focus,
+.login-select.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, .18);
+}
+.login-input-group .login-input.is-invalid {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ---------- Enlace recuperar ---------- */
+.login-footer-enlace {
+  text-align: right;
+}
+.login-link-recuperar {
+  font-size: .82rem;
+  color: #5b4cf7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.login-link-recuperar:hover {
+  color: #4a3ce4;
+  text-decoration: underline;
+}
+
+/* ---------- Panel recuperar ---------- */
+.login-recuperar-info p {
+  font-size: .9rem;
+}
+.login-btn-enviar {
+  background: #5b4cf7;
+  color: #ffffff;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: .92rem;
+  padding: .6rem 1.35rem;
+  transition: background .2s ease, transform .18s ease;
+}
+.login-btn-enviar:hover:not(:disabled) {
+  background: #4a3ce4;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(91, 76, 247, .35);
+}
+.login-btn-enviar:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* ---------- Footer / Botones ---------- */
+.login-footer {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding-top: .5rem !important;
+}
+.login-btn-limpiar {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: .92rem;
+  padding: .6rem 1.35rem;
+  transition: background .2s ease, color .2s ease;
+}
+.login-btn-limpiar:hover:not(:disabled) {
+  background: #e5e7eb;
+  color: #374151;
+}
+.login-btn-limpiar:disabled {
+  opacity: .55;
+}
+.login-btn-entrar {
+  background: #5b4cf7;
+  color: #ffffff;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: .92rem;
+  padding: .6rem 1.35rem;
+  transition: background .2s ease, transform .18s ease, box-shadow .2s ease;
+}
+.login-btn-entrar:hover:not(:disabled) {
+  background: #4a3ce4;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(91, 76, 247, .35);
+}
+.login-btn-entrar:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* ---------- Enlace registrarse ---------- */
+.login-registro-enlace {
+  border-top: 1px solid #e8e8f0;
+  padding-top: 1rem;
+}
+.login-link-registro {
+  font-size: .88rem;
+  color: #5b4cf7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.login-link-registro:hover {
+  color: #4a3ce4;
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 479.98px) {
+  .login-card { max-width: 100%; border-radius: 1rem; }
+  .login-title { font-size: 1.35rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in    { animation: none; }
+  .login-btn-entrar { transition: none; }
+}

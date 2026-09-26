@@ -1,0 +1,57 @@
+<div class="card-wrapper">
+  <!-- Tarjeta blanca con bordes redondeados -->
+  <article class="card h-100 rounded-3 overflow-hidden">
+    <!-- Imagen de la noticia -->
+    @if (noticia.imagen) {
+      <img
+        [src]="noticia.imagen"
+        [alt]="noticia.titulo"
+        class="card-img"
+        loading="lazy"
+      />
+    }
+
+    <div class="card-body d-flex flex-column">
+      <!-- Categoría + acciones en la misma línea -->
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="card-category">{{ noticia.categoria }}</span>
+
+        <div class="card-actions d-flex align-items-center gap-1">
+          <button
+            type="button"
+            class="del-btn"
+            [title]="t('card.eliminar')"
+            (click)="onDelete()"
+          >
+            <i class="bi bi-trash3"></i>
+          </button>
+          <button
+            type="button"
+            class="fav-btn"
+            [class.is-favorita]="noticia.esFavorito"
+            [title]="noticia.esFavorito ? t('card.favQuitar') : t('card.favAgregar')"
+            (click)="onToggleFavorito()"
+          >
+            <i [class]="noticia.esFavorito ? 'bi bi-heart-fill' : 'bi bi-heart'"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Título -->
+      <h3 class="card-title mb-2">
+        <a [routerLink]="rutaDetalle()" class="text-decoration-none">{{ noticia.titulo }}</a>
+      </h3>
+
+      <!-- Descripción corta -->
+      <p class="card-text line-clamp-3 mt-auto mb-0">{{ noticia.descripcion }}</p>
+    </div>
+
+    <!-- Pie: Ver más -->
+    <div class="card-footer">
+      <a [routerLink]="rutaDetalle()" class="card-footer-link">
+        <span>{{ t('card.verMas') }}</span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </article>
+</div>

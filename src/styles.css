@@ -1,0 +1,149 @@
+/* ============================================ */
+/* ESTILOS GLOBALES — INNOVA                  */
+/* ============================================ */
+
+/* Bootstrap + Bootstrap Icons */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:host {
+  --bright-blue: oklch(51.01% 0.274 263.83);
+  --electric-violet: oklch(53.18% 0.28 296.97);
+  --french-violet: oklch(47.66% 0.246 305.88);
+  --vivid-pink: oklch(69.02% 0.277 332.77);
+  --hot-red: oklch(61.42% 0.238 15.34);
+  --orange-red: oklch(63.32% 0.24 31.68);
+
+  --gray-900: oklch(19.37% 0.006 300.98);
+  --gray-700: oklch(36.98% 0.014 302.71);
+  --gray-400: oklch(70.9% 0.015 304.04);
+
+  --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+    180deg,
+    var(--orange-red) 0%,
+    var(--vivid-pink) 50%,
+    var(--electric-violet) 100%
+  );
+
+  --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
+    90deg,
+    var(--orange-red) 0%,
+    var(--vivid-pink) 50%,
+    var(--electric-violet) 100%
+  );
+
+  --pill-accent: var(--bright-blue);
+
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: block;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background-color: #fcfdff;
+  color: var(--gray-900);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+main.main-content {
+  width: 100%;
+  flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* Línea de clamping para 2 líneas */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== Custom Button Overrides ===== */
+.btn-primary-custom, .btn-innova {
+  background: #5b4cf7;
+  border-color: #5b4cf7;
+  color: #fff;
+  border-radius: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+}
+
+.btn-primary-custom:hover, .btn-innova:hover {
+  background: #4a3be6;
+  border-color: #4a3be6;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(91,76,247,.35);
+}
+
+.btn-outline-innova {
+  background: transparent;
+  border: 1.5px solid #e8e8f0;
+  color: #1a1a2e;
+  border-radius: 0.625rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-innova:hover {
+  border-color: #5b4cf7;
+  color: #5b4cf7;
+  background: rgba(91,76,247,.04);
+}
+
+/* Override Bootstrap primary colors with our purple */
+.text-primary,
+a.text-primary:hover {
+  color: #5b4cf7 !important;
+}
+
+.bg-primary {
+  background-color: #5b4cf7 !important;
+}
+
+.text-bg-primary {
+  color: #fff !important;
+  background-color: #5b4cf7 !important;
+}
+
+.btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-check:active + .btn-primary,
+.btn:focus:not(:focus-visible) {
+  background-color: #5b4cf7 !important;
+  border-color: #5b4cf7 !important;
+  color: #fff !important;
+}
+
+.btn-outline-primary,
+.btn-check:checked + .btn-outline-primary,
+.btn-check:active + .btn-outline-primary {
+  background-color: #5b4cf7 !important;
+  border-color: #5b4cf7 !important;
+  color: #fff !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #5b4cf7 !important;
+  border-color: #5b4cf7 !important;
+  color: #fff !important;
+}

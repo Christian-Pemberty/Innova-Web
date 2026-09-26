@@ -1,0 +1,113 @@
+/* ============================================
+   CREAR NOTICIA — estilos locales
+   ============================================ */
+:host {
+  --innova-primary: #5b4cf7;
+}
+
+.crear-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--innova-primary);
+}
+
+.crear-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #17162e;
+  letter-spacing: -0.02em;
+}
+
+.crear-form {
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.1);
+}
+
+.crear-body {
+  padding: 2rem;
+}
+
+.crear-label-campo {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #17162e;
+}
+
+.crear-input,
+.crear-select,
+.crear-descripcion {
+  border-radius: 0.65rem;
+  border: 1px solid #dcdce6;
+  padding: 0.75rem 1rem;
+}
+.crear-input:focus,
+.crear-select:focus,
+.crear-descripcion:focus {
+  border-color: var(--innova-primary);
+  box-shadow: 0 0 0 0.2rem rgba(91, 76, 247, 0.18);
+}
+
+.crear-ayuda {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.35rem;
+}
+
+.crear-contador {
+  margin-top: 0.25rem;
+}
+
+.crear-footer {
+  background: transparent;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 1.1rem 2rem;
+}
+
+.crear-btn-volver {
+  color: #6b7280;
+  font-weight: 600;
+}
+.crear-btn-volver:hover,
+.crear-btn-volver:focus-visible {
+  color: var(--innova-primary);
+}
+
+.crear-btn-publicar {
+  background: var(--innova-primary);
+  border: 1px solid var(--innova-primary);
+  color: #fff;
+  border-radius: 0.65rem;
+  font-weight: 600;
+  padding: 0.8rem 1.9rem;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.crear-btn-publicar:hover,
+.crear-btn-publicar:focus-visible {
+  background: #4a3ce0;
+  border-color: #4a3ce0;
+  transform: scale(1.03);
+  box-shadow: 0 8px 22px rgba(91, 76, 247, 0.35);
+}
+.crear-btn-publicar:disabled {
+  background: #e7e4fb;
+  border-color: #e7e4fb;
+  color: #4a3ce0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 1 !important;
+}
+
+.crear-feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.75rem;
+  background: rgba(22, 163, 74, 0.08);
+  color: #15803d;
+  font-weight: 500;
+}

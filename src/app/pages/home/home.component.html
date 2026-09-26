@@ -1,0 +1,202 @@
+<!-- ============================================ -->
+<!-- INICIO / HOME                              -->
+<!-- ============================================ -->
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Texto izquierdo -->
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <span class="hero-label d-inline-flex align-items-center gap-2" [attr.aria-label]="idiomas.t('hero.label')">
+          <i class="bi bi-stars hero-label-icon"></i>
+          {{ idiomas.t('hero.label') }}
+        </span>
+        <h1 class="hero-title">
+          {{ idiomas.t('hero.titulo') }}
+          <span class="text-primary">{{ idiomas.t('hero.tituloResaltado') }}</span>
+          {{ idiomas.t('hero.tituloCierre') }}
+        </h1>
+        <p class="hero-description">
+          {{ idiomas.t('hero.descripcion') }}
+        </p>
+        <div class="hero-actions">
+          <a routerLink="/noticias" class="btn btn-innova-hero">
+            {{ idiomas.t('hero.explorar') }}
+          </a>
+          <a routerLink="/contacto" class="btn btn-innova-outlined">
+            {{ idiomas.t('hero.contactar') }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen derecha + badge -->
+      <div class="col-lg-6 text-center">
+        <div class="hero-image-wrapper position-relative">
+          <img
+            src="https://picsum.photos/seed/innova-hero/600/500"
+            alt="Equipo de analistas en un centro de datos"
+            loading="eager"
+            class="hero-image"
+          />
+          <div class="hero-badge" [attr.aria-label]="'Más de 15 mil lectores — ' + idiomas.t('hero.badgeTexto')">
+            <span class="hero-badge-icon">
+              <svg lucideGlobe [size]="22" aria-hidden="true" focusable="false"></svg>
+            </span>
+            <span class="hero-badge-text">
+              <span class="hero-badge-number">{{ idiomas.t('hero.badgeNumero') }}</span>
+              <span class="hero-badge-label">{{ idiomas.t('hero.badgeTexto') }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILTROS DE CATEGORÍA ===== -->
+<section class="filter-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="filter-bar d-flex flex-wrap align-items-center justify-content-center gap-2 py-3">
+          @for (f of filtros(); track f.clave) {
+            <button
+              type="button"
+              class="filter-pill d-inline-flex align-items-center gap-2 px-4 py-2 rounded-pill"
+              [class.filter-pill-active]="esFiltroActivo(f.clave)"
+              (click)="setFiltro(f.clave)"
+            >
+              <i [class]="f.icono"></i>
+              {{ f.etiqueta }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOTICIAS DESTACADAS ===== -->
+<section class="featured-section">
+  <div class="container">
+    <!-- Encabezado -->
+    <div class="row align-items-end mb-5">
+      <div class="col-lg-6 mb-3 mb-lg-0">
+        <h2 class="section-title serif-heading mb-1">{{ idiomas.t('home.noticiasDestacadas') }}</h2>
+        <p class="section-subtitle text-secondary mb-0">
+          {{ idiomas.t('home.subtitulo') }}
+        </p>
+      </div>
+      <div class="col-lg-6 text-lg-end">
+        <a routerLink="/noticias" class="text-primary fw-semibold text-decoration-none">
+          {{ idiomas.t('home.verTodo') }} <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid de tarjetas -->
+    @if (cargando()) {
+      <!-- Indicador de carga: primera visita, noticias.json aún en camino. -->
+      <div class="col-12 text-center py-5" role="status" aria-live="polite">
+        <div class="spinner-border text-primary" aria-hidden="true"></div>
+        <p class="text-secondary mt-3 mb-0">{{ idiomas.t('home.cargando') }}</p>
+      </div>
+    } @else {
+      <div class="row g-4">
+        @for (noticia of noticiasFiltradas(); track noticia.id) {
+          <div class="col-12 col-md-6 col-lg-4">
+            <app-news-card
+              [noticia]="noticia"
+              (toggleFavorito)="service.toggleFavorito($event)"
+              (eliminar)="onEliminar($event)"
+            />
+          </div>
+        } @empty {
+          <div class="col-12">
+            <div class="text-center py-5 text-secondary">
+              <i class="bi bi-search display-4 mb-3 d-block"></i>
+              <p>{{ idiomas.t('home.nadaEncontrado') }}</p>
+              <button class="btn btn-link p-0" (click)="setFiltro('todas')">
+                {{ idiomas.t('home.verTodas') }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ===== CTA: SÉ PARTE DE LA CONVERSACIÓN ===== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="row align-items-stretch g-5">
+      <!-- Texto + Redactor rápido -->
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <div class="cta-content">
+          <h2 class="cta-title serif-heading mb-3">
+            {{ idiomas.t('home.ctaTitulo') }}
+          </h2>
+          <p class="cta-description mb-4">
+            {{ idiomas.t('home.ctaDescripcion') }}
+          </p>
+          <div class="cta-quick-form">
+            <p class="cta-quick-label">{{ idiomas.t('home.redactor') }}</p>
+            <form class="d-flex flex-wrap align-items-stretch gap-2" (ngSubmit)="onSubmit(crearForm)" #crearForm="ngForm">
+              <div class="cta-row d-flex gap-2 flex-fill">
+                <input
+                  type="text"
+                  class="form-control cta-input flex-fill"
+                  id="cta-titulo"
+                  name="ctaTitulo"
+                  [ngModel]
+                  [attr.placeholder]="idiomas.t('home.phTitulo')"
+                  required
+                  autocomplete="off"
+                />
+                <select class="form-select cta-select flex-fill" id="cta-categoria" name="ctaCategoria" [ngModel]="selectedCategoria" required>
+                  <option value="_placeholder_" disabled>{{ idiomas.t('home.categorias') }}</option>
+                  <option value="Educativas">{{ idiomas.t('filtro.educativas') }}</option>
+                  <option value="Tecnológicas">{{ idiomas.t('filtro.tecnologicas') }}</option>
+                  <option value="Turísticas">{{ idiomas.t('filtro.turisticas') }}</option>
+                  <option value="Comerciales">{{ idiomas.t('filtro.comerciales') }}</option>
+                </select>
+              </div>
+              <textarea
+                class="form-control cta-descripcion"
+                id="cta-descripcion"
+                name="ctaDescripcion"
+                [ngModel]
+                [attr.placeholder]="idiomas.t('home.phDescripcion')"
+                rows="2"
+                maxlength="280"
+              ></textarea>
+              <button type="submit" class="btn btn-innova-hero cta-submit">
+                {{ idiomas.t('home.crearBorrador') }}
+              </button>
+            </form>
+            @if (publicada()) {
+              <p class="cta-feedback d-flex align-items-center gap-2 mt-2 mb-0" role="status">
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                {{ idiomas.tConParametros('home.borradorCreado', { titulo: publicada() ?? '' }) }}
+              </p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen -->
+      <div class="col-lg-5">
+        <img
+          src="https://picsum.photos/seed/innova-cta/640/520"
+          alt="Redactora revisando documentos en su escritorio"
+          class="cta-photo w-100 rounded-4"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+

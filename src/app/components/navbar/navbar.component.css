@@ -1,0 +1,303 @@
+/* Navbar Innova */
+.innova-navbar {
+  position: relative; /* contexto para el menú móvil absoluto */
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  padding: .65rem 0;
+  z-index: 1020;
+}
+.innova-navbar > .container {
+  padding: 0 2rem;
+}
+
+/* ---------- Logo ---------- */
+.brand {
+  gap: .55rem;
+}
+.brand-bar {
+  display: inline-block;
+  width: 5px;
+  height: 22px;
+  background: #5b4cf7;
+  border-radius: 999px;
+}
+.brand-text {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: #1a1a2e;
+}
+
+/* ---------- Enlaces centrales ---------- */
+.nav-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.1rem;
+}
+.nav-link-item {
+  position: relative;
+}
+.nav-link-text {
+  display: inline-block;
+  padding: .35rem 0;
+  font-size: .92rem;
+  font-weight: 500;
+  color: #4b5563;
+  transition: color .2s ease;
+}
+.nav-link-text:hover {
+  color: #1a1a2e;
+}
+
+/* Indicador de la ruta activa */
+.nav-active {
+  color: #5b4cf7 !important;
+}
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1.3rem;
+  height: 3px;
+  background: #5b4cf7;
+  border-radius: 999px;
+}
+
+/* ---------- Lado derecho ---------- */
+.nav-right {
+  gap: 1.5rem;
+}
+.lang-link {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #6b7280;
+  transition: color .2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: inherit;
+}
+.lang-link:hover {
+  color: #1a1a2e;
+}
+
+.btn-innova {
+  background: #5b4cf7;
+  color: #ffffff;
+  border: none;
+  border-radius: .55rem;
+  padding: .5rem 1.35rem;
+  font-size: .92rem;
+  font-weight: 500;
+  transition: background .2s ease;
+}
+.btn-innova:hover {
+  background: #4a3ce4;
+  color: #ffffff;
+}
+
+/* Botón secundario "Iniciar sesión" */
+.btn-innova-secundaria {
+  background: transparent;
+  color: #5b4cf7;
+  border: 1.5px solid #5b4cf7;
+  border-radius: .55rem;
+  padding: .4rem 1.2rem;
+  font-size: .88rem;
+  font-weight: 600;
+  transition: background .2s ease, color .2s ease;
+}
+.btn-innova-secundaria:hover {
+  background: #5b4cf7;
+  color: #ffffff;
+}
+
+/* ---------- Usuario logueado y botón de salida ---------- */
+.nav-usuario {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+.nav-usuario i {
+  font-size: 1.25rem;
+  color: #5b4cf7;
+}
+
+.btn-salir {
+  background: transparent;
+  color: #dc3545;
+  border: 1.5px solid #dc3545;
+  border-radius: .55rem;
+  padding: .4rem .95rem;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.btn-salir:hover {
+  background: #dc3545;
+  color: #ffffff;
+}
+
+/* ---------- Botón hamburguesa ---------- */
+.nav-toggle {
+  display: none;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: .55rem;
+  background: transparent;
+  color: #1a1a2e;
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: background .2s ease, color .2s ease;
+}
+.nav-toggle:hover {
+  background: #f3f2ff;
+}
+.nav-toggle:focus-visible {
+  outline: 2px solid #5b4cf7;
+  outline-offset: 2px;
+}
+.nav-toggle-open,
+.nav-toggle-open:hover {
+  color: #5b4cf7;
+}
+
+/* ---------- Menú desplegable (móvil / tablet) ---------- */
+.menu-movil {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* tapar todo el contenido */
+  display: none;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 14px 28px rgba(26, 26, 46, .08);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0 2rem;
+  transition: max-height .3s ease, opacity .22s ease, padding .3s ease, visibility .3s;
+}
+.menu-movil.is-open {
+  max-height: 480px;
+  opacity: 1;
+  visibility: visible;
+  padding: .75rem 2rem 1.25rem;
+}
+
+.menu-movil-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu-movil-link {
+  display: block;
+  padding: .6rem .75rem;
+  border-radius: .55rem;
+  font-size: .95rem;
+  font-weight: 500;
+  color: #4b5563;
+  transition: background .2s ease, color .2s ease;
+}
+.menu-movil-link:hover {
+  background: #f6f5ff;
+  color: #1a1a2e;
+}
+.menu-movil-link.nav-active {
+  background: #f0eeff;
+  color: #5b4cf7;
+  font-weight: 600;
+}
+
+.menu-movil-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.menu-movil-footer .lang-link {
+  padding: .45rem .85rem;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: .55rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+  .nav-links-list {
+    display: none !important;
+  }
+  /* la ES dentro del header se oculta (la de dentro del submenu sigue visible) */
+  .nav-right > .lang-link {
+    display: none !important;
+  }
+  /* el botón de arriba también se oculta: solo queda dentro del panel */
+  .nav-right > .btn-innova {
+    display: none !important;
+  }
+  /* En móvil el botón secundario y de salida se muestran igual que el de registro */
+  .nav-right > .btn-innova-secundaria {
+    display: none !important;
+  }
+  .nav-right > .btn-salir {
+    display: none !important;
+  }
+  .nav-right {
+    gap: .5rem;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .menu-movil {
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .innova-navbar > .container {
+    padding: 0 1.25rem;
+    gap: .5rem; /* menos espacio entre logo y lado derecho */
+  }
+  .menu-movil,
+  .menu-movil.is-open {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .btn-innova {
+    font-size: .82rem;
+    padding: .45rem .9rem;
+  }
+  .brand-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle,
+  .nav-link-text,
+  .lang-link,
+  .btn-innova,
+  .menu-movil,
+  .menu-movil-link {
+    transition: none;
+  }
+}

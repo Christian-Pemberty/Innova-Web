@@ -1,0 +1,209 @@
+/* ============================================ */
+/* REGISTER MODAL — ESTILOS INNOVA              */
+/* ============================================ */
+
+/* Overlay oscuro con blur */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(15, 15, 30, .55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Tarjeta del modal */
+.register-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 1.25rem;
+  border: none;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+@keyframes register-in {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)     scale(    1);}
+}
+.animate-in { animation: register-in .32s ease both; }
+
+/* ---------- Header ---------- */
+.register-header {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.register-label {
+  background: #f0eeff;
+  color: #5b4cf7;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: .3rem .75rem;
+  border-radius: .5rem;
+}
+.register-label i {
+  font-size: .85rem;
+}
+
+.register-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.65rem;
+  color: #1a1a2e;
+}
+
+/* Botón cerrar (X) estilizado */
+.register-x {
+  opacity: .55;
+  transition: opacity .2s ease;
+}
+.register-x:hover,
+.register-x:focus-visible {
+  opacity: 1;
+  background: #f0eeff !important;
+}
+
+/* ---------- Formulario ---------- */
+.register-label-campo {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: .35rem;
+}
+
+.register-input,
+.register-select {
+  border: 1.5px solid #e8e8f0;
+  border-radius: .75rem;
+  padding: .65rem .9rem;
+  font-size: .92rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.register-input:focus,
+.register-select:focus {
+  border-color: #5b4cf7;
+  box-shadow: 0 0 0 3px rgba(91, 76, 247, .18);
+  outline: none;
+}
+
+.register-ayuda {
+  font-size: .78rem;
+  color: #9ca3af;
+}
+
+/* Input-group para contrasena */
+.register-input-group {
+  position: relative;
+}
+.register-input-group .register-input {
+  padding-right: 2.8rem;
+}
+.register-toggle {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  transition: color .2s ease;
+  padding: .65rem .7rem;
+}
+.register-toggle:hover,
+.register-toggle:focus-visible {
+  color: #5b4cf7;
+}
+
+/* ---------- Estado inválido (validación) ---------- */
+.register-input.is-invalid,
+.register-select.is-invalid {
+  border-color: #dc3545;
+  background-image: none;
+}
+
+.register-input.is-invalid:focus,
+.register-select.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, .18);
+}
+
+.register-input-group .register-input.is-invalid {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ---------- Feedback de éxito ---------- */
+.register-feedback {
+  background: #f0ffe8;
+  border: 1.5px solid #ccefa3;
+  border-radius: .6rem;
+  color: #1a6b38;
+  padding: .65rem .75rem;
+  font-size: .88rem;
+}
+.register-feedback i {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Footer / Botones ---------- */
+.register-footer {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding-top: .5rem !important;
+}
+
+.register-btn-limpiar {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: .92rem;
+  padding: .6rem 1.35rem;
+  transition: background .2s ease, color .2s ease;
+}
+.register-btn-limpiar:hover:not(:disabled) {
+  background: #e5e7eb;
+  color: #374151;
+}
+.register-btn-limpiar:disabled {
+  opacity: .55;
+}
+
+.register-btn-crear {
+  background: #5b4cf7;
+  color: #ffffff;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: .92rem;
+  padding: .6rem 1.35rem;
+  transition: background .2s ease, transform .18s ease, box-shadow .2s ease;
+}
+.register-btn-crear:hover:not(:disabled) {
+  background: #4a3ce4;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(91, 76, 247, .35);
+}
+.register-btn-crear:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 479.98px) {
+  .register-card { max-width: 100%; border-radius: 1rem; }
+  .register-title { font-size: 1.35rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in    { animation: none; }
+  .register-btn-crear { transition: none; }
+}

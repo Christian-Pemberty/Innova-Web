@@ -1,0 +1,22 @@
+<!-- ============================================ -->
+<!-- INICIAR SESIÓN — Página de aterrizaje        -->
+<!-- ============================================ -->
+<section class="login-hero d-flex align-items-center min-vh-100 text-center">
+  <div class="container">
+    <span class="login-label d-inline-flex align-items-center gap-2 mb-3">
+      <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+      INGRESA A INNOVA
+    </span>
+    <h1 class="login-title mb-3">¿Bienvenido de nuevo?</h1>
+    <p class="login-subtitle text-secondary mb-4">
+      Inicia sesión en tu cuenta para continuar compartiendo ideas, conectando con otros perfiles innovadores y accediendo a contenido personalizado.
+    </p>
+    <button type="button" class="btn login-btn-primary" (click)="abrirModal()">
+      <i class="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>
+      Iniciar sesión
+    </button>
+    <a routerLink="/registro" class="login-texto mt-3 d-inline-block">
+      ¿No tienes cuenta? <strong>Regístrate aquí</strong>
+    </a>
+  </div>
+</section>

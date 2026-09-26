@@ -1,0 +1,168 @@
+<!-- ===== Login Modal (off-canvas right) ===== -->
+@if (abierto()) {
+<div class="modal-fondo" role="dialog" aria-modal="true" aria-labelledby="login-titulo" (mousedown)="onOverlayClick($event)">
+  
+  <div class="card login-card shadow-lg animate-in">
+    <!-- Header -->
+    <div class="card-header login-header d-flex align-items-center justify-content-between border-0 pb-0 pt-4 px-4 px-md-5">
+      <div>
+        <span class="login-label d-inline-flex align-items-center gap-2 mb-1">
+          <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+          INICIA SESIÓN
+        </span>
+        <h2 id="login-titulo" class="login-title mb-0">Bienvenido de nuevo</h2>
+      </div>
+      <button type="button"
+              class="btn-close login-x"
+              aria-label="Cerrar"
+              [disabled]="enviando()"
+              (click)="cerrar()">
+      </button>
+    </div>
+
+    <!-- Mensaje de estado -->
+    @if (mensaje(); as m) {
+      <div class="login-msg px-4 pt-3" [class.login-msg-exito]="m.exitoso" [class.login-msg-error]="!m.exitoso">
+        <i class="bi" [class.bi-check-circle-fill]="m.exitoso" [class.bi-exclamation-triangle-fill]="!m.exitoso" aria-hidden="true"></i>
+        {{ m.texto }}
+      </div>
+    }
+
+    <!-- Body / Form -->
+    <form class="login-form card-body px-4 px-md-5 py-3"
+          [formGroup]="formLogin"
+          (ngSubmit)="onSubmitLogin()"
+          novalidate>
+
+      <!-- Tabs -->
+      <div class="login-tabs d-flex gap-2 mb-4">
+        <button type="button"
+                class="btn login-tab"
+                [class.login-tab-activa]="tabActiva() === 'login'"
+                (click)="cambiarTab('login')">
+          Iniciar sesión
+        </button>
+        <button type="button"
+                class="btn login-tab"
+                [class.login-tab-activa]="tabActiva() === 'recuperar'"
+                (click)="cambiarTab('recuperar')">
+          Recuperar
+        </button>
+      </div>
+
+      @if (tabActiva() === 'login') {
+        <!-- Correo electrónico -->
+        <div class="mb-3">
+          <label for="login-correo" class="form-label login-label-campo">
+            <i class="bi bi-envelope me-1" aria-hidden="true"></i>
+            Correo electrónico <span class="text-danger">*</span>
+          </label>
+          <input type="email"
+                 class="form-control login-input"
+                 id="login-correo"
+                 formControlName="correo"
+                 placeholder="tu@correo.com"
+                 required
+                 maxlength="120"
+                 autocomplete="email"
+                 [class.is-invalid]="errorDe('correo')" />
+          @if (errorDe('correo')) {
+            <div class="invalid-feedback">{{ mensajeError('correo') }}</div>
+          }
+        </div>
+
+        <!-- Contraseña -->
+        <div class="mb-3 position-relative">
+          <label for="login-contrasena" class="form-label login-label-campo">
+            <i class="bi bi-lock me-1" aria-hidden="true"></i>
+            Contraseña <span class="text-danger">*</span>
+          </label>
+          <div class="input-group login-input-group">
+            <input [type]="mostrarClave() ? 'text' : 'password'"
+                   class="form-control login-input"
+                   id="login-contrasena"
+                   formControlName="contrasena"
+                   placeholder="Tu contraseña"
+                   required
+                   autocomplete="current-password"
+                   [class.is-invalid]="errorDe('contrasena')" />
+            <button type="button"
+                    class="btn login-toggle"
+                    aria-label="{{ mostrarClave() ? 'Ocultar contraseña' : 'Mostrar contraseña' }}"
+                    (click)="toggleClave()">
+              <i class="bi" [class.bi-eye-fill]="mostrarClave()" [class.bi-eye-slash-fill]="!mostrarClave()"></i>
+            </button>
+          </div>
+          @if (errorDe('contrasena')) {
+            <div class="invalid-feedback mt-1">{{ mensajeError('contrasena') }}</div>
+          }
+        </div>
+
+        <!-- Enlace recuperar -->
+        <div class="login-footer-enlace mb-4">
+          <a href="#" (click)="recuClave(); $event.preventDefault()" class="login-link-recuperar">
+            <i class="bi bi-question-circle me-1" aria-hidden="true"></i>
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
+      } @else {
+        <!-- Panel Recuperar -->
+        <div class="login-recuperar-info mb-4">
+          <p class="text-secondary mb-2">
+            Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.
+          </p>
+          <div class="mb-3">
+            <label for="rec-correo" class="form-label login-label-campo">
+              <i class="bi bi-envelope me-1" aria-hidden="true"></i>
+              Correo electrónico <span class="text-danger">*</span>
+            </label>
+            <input type="email"
+                   class="form-control login-input"
+                   id="rec-correo"
+                   placeholder="tu@correo.com"
+                   required
+                   autocomplete="email" />
+          </div>
+          <button type="button" class="btn login-btn-enviar" (click)="recuClave()">
+            <i class="bi bi-paper-plane me-1" aria-hidden="true"></i>
+            Enviar enlace
+          </button>
+        </div>
+      }
+
+      <!-- Botones -->
+      <div class="login-footer d-flex flex-wrap align-items-center justify-content-between gap-2 pt-1">
+        <button type="button"
+                class="btn login-btn-limpiar"
+                [disabled]="enviando()"
+                (click)="cerrar()">
+          <i class="bi bi-x-lg me-1" aria-hidden="true"></i>
+          Cerrar
+        </button>
+        @if (tabActiva() === 'login') {
+          <button type="submit"
+                  class="btn login-btn-entrar"
+                  [disabled]="formLogin.invalid || enviando()">
+            @if (enviando()) {
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Entrando…
+            } @else {
+              <i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>
+              Iniciar sesión
+            }
+          </button>
+        }
+      </div>
+
+      <!-- Enlace para registrarse -->
+      <div class="login-registro-enlace text-center mt-3 mb-1">
+        <a routerLink="/registro" class="login-link-registro">
+          <i class="bi bi-person-plus me-1" aria-hidden="true"></i>
+          ¿No tienes cuenta? Regístrate aquí
+        </a>
+      </div>
+
+    </form>
+  </div>
+</div>
+}

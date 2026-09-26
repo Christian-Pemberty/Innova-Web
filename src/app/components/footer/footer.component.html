@@ -1,0 +1,68 @@
+<footer class="innova-footer">
+  <div class="container">
+    <div class="row g-4 g-lg-5">
+      <!-- Marca y descripción del portal -->
+      <div class="col-12 col-lg-4">
+        <div class="brand mb-3">
+          <span class="brand-bar" aria-hidden="true"></span>
+          <span class="brand-text">Innova</span>
+        </div>
+        <p class="brand-desc mb-0">
+          {{ idiomas.t('footer.marcaDesc') }}
+        </p>
+      </div>
+
+      <!-- Columna EXPLORAR -->
+      <div class="col-12 col-lg-4">
+        <h6 class="footer-heading text-center text-lg-start">{{ idiomas.t('footer.explorar') }}</h6>
+        <ul class="list-unstyled footer-links mb-0 text-center text-lg-start">
+          @for (enlace of enlacesExplorar(); track enlace.etiqueta) {
+            <li>
+              <a [routerLink]="enlace.ruta" class="footer-link">
+                {{ enlace.etiqueta }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Columna CONTACTO OFICIAL -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <h6 class="footer-heading">{{ idiomas.t('footer.contactoOficial') }}</h6>
+        <ul class="list-unstyled contact-list mb-0">
+          <li>
+            <i class="bi bi-envelope contact-icon" aria-hidden="true"></i>
+            <a href="mailto:redaccion@innova.com" class="footer-link">
+              redaccion@innova.com
+            </a>
+          </li>
+          <li>
+            <i class="bi bi-telephone contact-icon" aria-hidden="true"></i>
+            <a href="tel:+34914002321" class="footer-link">
+              +34 (91) 400 2321
+            </a>
+          </li>
+          <li>
+            <i class="bi bi-geo-alt contact-icon" aria-hidden="true"></i>
+            <span class="footer-link">
+              Paseo de la Castellana 95, Madrid, España
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-bottom d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center gap-2">
+      <small class="d-block mb-0">
+        {{ idiomas.tConParametros('footer.copyright', { anio: anioStr }) }}
+        {{ idiomas.t('footer.equipo') }}
+      </small>
+      <div class="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-end align-self-center align-self-lg-auto">
+        <a href="#" class="footer-legal">{{ idiomas.t('footer.privacidad') }}</a>
+        <a href="#" class="footer-legal">{{ idiomas.t('footer.terminos') }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

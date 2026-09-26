@@ -1,0 +1,92 @@
+<!-- Navbar Innova — estilo referencia -->
+<nav class="navbar innova-navbar sticky-top">
+  <div class="container d-flex align-items-center justify-content-between flex-nowrap">
+
+    <!-- Logo -->
+    <a class="brand d-flex align-items-center gap-2 text-decoration-none" routerLink="/">
+      <span class="brand-bar"></span>
+      <span class="brand-text">Innova</span>
+    </a>
+
+    <!-- Enlaces centrados (escritorio) -->
+    <ul class="nav-links-list d-flex align-items-center mb-0">
+      @for (enlace of enlaces(); track enlace.ruta) {
+        <li class="nav-link-item position-relative">
+          <a [routerLink]="enlace.ruta" routerLinkActive="nav-active" #rla="routerLinkActive"
+             class="nav-link-text text-decoration-none">
+            {{ enlace.etiqueta }}
+          </a>
+          @if (rla.isActive) {
+            <span class="nav-indicator"></span>
+          }
+        </li>
+      }
+    </ul>
+
+    <!-- Derecha -->
+    <div class="nav-right d-flex align-items-center">
+      <button type="button" class="lang-link" (click)="cambiarIdioma()" [attr.aria-label]="idiomaService.t('nav.idioma')">
+        {{ codigoIdioma() }}
+      </button>
+
+      @if (sesion(); as sesionActual) {
+        <!-- Usuario logueado -->
+        <span class="nav-usuario" title="{{ sesionActual.nombre }}">
+          <i class="bi bi-person-circle" aria-hidden="true"></i>
+          {{ primerNombre() }}
+        </span>
+        <button type="button" class="btn-salir" (click)="onLogout()">
+          {{ idiomaService.t('nav.cerrarSesion') }}
+        </button>
+      } @else {
+        <!-- No logueado -->
+        <button type="button" class="btn-innova-secundaria d-inline-flex align-items-center" (click)="abrirLogin()">
+          {{ idiomaService.t('nav.iniciarSesion') }}
+        </button>
+        <button type="button" class="btn-innova d-inline-flex align-items-center" (click)="abrirRegistro()">
+          {{ idiomaService.t('nav.registrarse') }}
+        </button>
+      }
+
+      <!-- Botón hamburguesa (móvil / tablet) -->
+      <button type="button"
+              class="nav-toggle"
+              [class.nav-toggle-open]="menuAbierto()"
+              [attr.aria-expanded]="menuAbierto()"
+              aria-controls="menu-movil"
+              [attr.aria-label]="menuAbierto() ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
+              (click)="toggleMenu()">
+        <i class="bi" [class.bi-list]="!menuAbierto()" [class.bi-x-lg]="menuAbierto()"
+           aria-hidden="true"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Menú desplegable (móvil / tablet) -->
+  <div id="menu-movil" class="menu-movil"
+       [class.is-open]="menuAbierto()" [attr.inert]="!menuAbierto()">
+    <ul class="menu-movil-links mb-0">
+      @for (enlace of enlaces(); track enlace.ruta) {
+        <li>
+          <a [routerLink]="enlace.ruta" routerLinkActive="nav-active"
+             class="menu-movil-link text-decoration-none">
+            {{ enlace.etiqueta }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="menu-movil-footer">
+      <button type="button" class="lang-link" (click)="cambiarIdioma()" [attr.aria-label]="idiomaService.t('nav.idioma')">
+        {{ codigoIdioma() }}
+      </button>
+      @if (sesion(); as sesionActual) {
+        <button type="button" class="btn-salir" (click)="onLogout()">{{ idiomaService.t('nav.cerrarSesion') }}</button>
+      } @else {
+        <button type="button" class="btn-innova-secundaria d-flex align-items-center justify-content-center" (click)="abrirLogin()">{{ idiomaService.t('nav.iniciarSesion') }}</button>
+        <button type="button" class="btn-innova d-flex align-items-center justify-content-center" (click)="abrirRegistro()">{{ idiomaService.t('nav.registrarse') }}</button>
+      }
+    </div>
+  </div>
+</nav>
