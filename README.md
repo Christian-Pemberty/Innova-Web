@@ -135,7 +135,7 @@ cd Innova
 npm install
 
 # 3. Ejecutar en modo desarrollo
-ng serve
+npx ng serve
 
 # 4. Abrir en el navegador
 # http://localhost:4200/
