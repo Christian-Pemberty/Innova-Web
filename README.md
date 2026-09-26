@@ -182,7 +182,9 @@ ng test
 
 ## Licencia
 
-Todos los derechos reservados. © 2026 Innova S.A.
+Todos los derechos reservados. © 2026 Innova
+Estudiantes Politécnico Grancolombiano
+Equipo 20
 
 ---
 
