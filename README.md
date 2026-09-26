@@ -176,13 +176,13 @@ ng test
 
 ## Equipo de desarrollo
 
-> **Proyecto Innova** — Creado por el **Equipo 20 de FRONT END** de la **Universidad Gran Colombia**.
+> **Proyecto Innova** — Creado por el **Equipo 20 de FRONT END** de la **Universidad Politécnico Gran Colombiano**.
 
 ---
 
 ## Licencia
 
-Todos los derechos reservados. © 2025 Innova S.A. — [Política de Privacidad](https://innova.com/privacidad) · [Términos de Uso](https://innova.com/terminos)
+Todos los derechos reservados. © 2026 Innova S.A.
 
 ---
 
