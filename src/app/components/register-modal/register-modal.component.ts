@@ -166,7 +166,17 @@ export class RegisterModalComponent {
     // Simula la latencia de una API real antes de "guardar" la sesión.
     setTimeout(() => {
       // Guarda la sesión en localStorage y cierra el modal automáticamente.
-      this.registro.registrar(datos);
+      const registrado = this.registro.registrar(datos);
+
+      if (!registrado) {
+      alert('Este correo ya está registrado. Intenta iniciar sesión.');
+
+      this.enviando.set(false);
+       this.appRef.tick();
+
+       return;
+        }
+
       this.form.reset();
       this.mostrarClave.set(false);
       this.enviando.set(false);
