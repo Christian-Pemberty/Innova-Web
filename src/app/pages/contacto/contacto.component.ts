@@ -22,8 +22,8 @@ export class ContactoComponent {
   /** Recupero datos de contacto fijos para mostrar en la página. */
   readonly redaccion = {
     email: 'redaccion@innova.com',
-    celular: '+56 9 1234 5678',
-    ciudad: 'Santiago de Chile'
+    celular: '+57 604 234 5678',
+    ciudad: 'Medellín'
   };
 
   /**
