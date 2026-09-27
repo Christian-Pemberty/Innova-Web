@@ -56,6 +56,15 @@
                   {{ noticia()!.esFavorito ? 'Quitar de favoritos' : 'Añadir a favoritos' }}
                 </span>
               </button>
+
+              <a
+              [routerLink]="['/noticias/editar', noticia()!.id]"
+              class="btn btn-outline-primary justify-content-center"
+              >
+              <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>
+                Editar noticia
+              </a>
+
               <button
                 type="button"
                 class="btn btn-outline-danger justify-content-center"
@@ -64,6 +73,7 @@
                 <i class="bi bi-trash me-1" aria-hidden="true"></i>
                 Eliminar noticia
               </button>
+              
               <a routerLink="/crear-noticia" class="btn btn-outline-secondary justify-content-center">
                 <i class="bi bi-pencil-square me-1" aria-hidden="true"></i>
                 Crear otra noticia
