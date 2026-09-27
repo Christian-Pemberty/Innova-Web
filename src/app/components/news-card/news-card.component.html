@@ -17,6 +17,15 @@
         <span class="card-category">{{ noticia.categoria }}</span>
 
         <div class="card-actions d-flex align-items-center gap-1">
+           <a
+           [routerLink]="['/noticias/editar', noticia.id]"
+            class="edit-btn"
+            [title]="'Editar noticia'"
+            aria-label="Editar noticia"
+          >
+          <i class="bi bi-pencil-square"></i>
+          </a>
+
           <button
             type="button"
             class="del-btn"
@@ -25,6 +34,7 @@
           >
             <i class="bi bi-trash3"></i>
           </button>
+          
           <button
             type="button"
             class="fav-btn"

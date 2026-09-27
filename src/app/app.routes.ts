@@ -30,6 +30,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'noticias/editar/:id',
+    loadComponent: () =>
+      import('./pages/crear-noticia/crear-noticia.component').then(
+        (mod) => mod.CrearNoticiaComponent
+      ),
+  },
+  {
     path: 'noticias/:id',
     loadComponent: () =>
       import('./pages/noticia-detalle/noticia-detalle.component').then(

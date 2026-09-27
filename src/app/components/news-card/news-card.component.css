@@ -159,3 +159,24 @@
 .card-footer-link:hover i {
   transform: translateX(3px);
 }
+
+.edit-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #9aa0ab;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: rgba(91, 76, 247, 0.1);
+  color: var(--innova-primary);
+}

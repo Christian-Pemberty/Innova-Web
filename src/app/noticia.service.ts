@@ -82,6 +82,33 @@ export class NoticiaService {
     this._noticias.set(actualizada);
   }
 
+  /** Actualiza los datos de una noticia existente y persiste el cambio. */
+  actualizarNoticia(
+    id: number,
+    cambios: Partial<Omit<Noticia, 'id'>>
+  ): Noticia | null {
+    const lista = this._noticias();
+    const indice = lista.findIndex((n) => n.id === id);
+
+    if (indice === -1) {
+      return null;
+    }
+
+    const actualizada = {
+      ...lista[indice],
+      ...cambios,
+      id
+    };
+
+    const nuevaLista = [...lista];
+    nuevaLista[indice] = actualizada;
+
+    this.guardaAlmacenamiento(nuevaLista);
+    this._noticias.set(nuevaLista);
+
+    return actualizada;
+  }
+  
   /** Elimina la noticia identificada por `id` y persiste el cambio. */
   eliminarNoticia(id: number): void {
     const actualizada = this._noticias().filter((n) => n.id !== id);

@@ -11,7 +11,9 @@
             <i class="bi bi-pencil-square" aria-hidden="true"></i>
             {{ idiomas.t('crear.label') }}
           </span>
-          <h1 class="crear-title mb-2">{{ idiomas.t('crear.title') }}</h1>
+          <h1 class="crear-title mb-2">
+            {{ editando() ? 'Editar noticia' : idiomas.t('crear.title') }}
+          </h1>
           <p class="crear-subtitle text-secondary mb-0">
             {{ idiomas.t('crear.subtitulo') }}
           </p>
@@ -98,11 +100,16 @@
 
             <!-- Confirmación temporal -->
             @if (publicada()) {
-              <div class="crear-feedback d-flex align-items-center gap-2" role="status">
-                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                {{ idiomas.tConParametros('crear.feedback', { titulo: publicada() ?? '' }) }}
-              </div>
-            }
+           <div class="crear-feedback d-flex align-items-center gap-2" role="status">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+
+           @if (editando()) {
+           Noticia "{{ publicada() }}" actualizada correctamente.
+          } @else {
+          {{ idiomas.tConParametros('crear.feedback', { titulo: publicada() ?? '' }) }}
+          }
+          </div>
+        }
           </div>
 
           <div class="card-footer crear-footer d-flex flex-wrap align-items-center justify-content-between gap-2">
@@ -112,7 +119,7 @@
             </a>
             <button type="submit" class="btn crear-btn-publicar" [disabled]="!crearForm.valid">
               <i class="bi bi-send me-1" aria-hidden="true"></i>
-              {{ idiomas.t('crear.publicar') }}
+              {{ editando() ? 'Guardar cambios' : idiomas.t('crear.publicar') }}
             </button>
           </div>
         </form>
