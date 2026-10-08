@@ -1,0 +1,28 @@
+{
+  "noticias": [
+    {
+      "id": 1,
+      "titulo": "IA y el Renacimiento del Hardware Editorial",
+      "categoria": "Tecnológicas",
+      "descripcion": "Cuando la inteligencia artificial redibuja la redacción: cómo los editores recuperan el papel, la tinta y el oficio gracias a herramientas generativas que automatizan lo repetitivo y devuelven tiempo para la mirada humana.",
+      "imagen": "https://picsum.photos/seed/innova-hw/600/400",
+      "esFavorito": false
+    },
+    {
+      "id": 2,
+      "titulo": "Aulas Inmersivas: El Experimento de Realidad Mixta",
+      "categoria": "Educativas",
+      "descripcion": "Una cohorte de estudiantes comparte pizarras y avatares en un aula híbrida donde la realidad mezclada convierte cada clase en un laboratorio: anatomía en 3D, historia vivida y matemáticas que se pueden tocar.",
+      "imagen": "https://picsum.photos/seed/innova-class/600/400",
+      "esFavorito": true
+    },
+    {
+      "id": 3,
+      "titulo": "Ecoturismo de Precisión en la Reserva Austral",
+      "categoria": "Turísticas",
+      "descripcion": "Sensores, drones de bajo impacto y trazabilidades de huella permiten a los visitantes moverse por la reserva austral sin interferir: un modelo de turismo que mide, adapta y protege a la vez que acerca a la naturaleza.",
+      "imagen": "https://picsum.photos/seed/innova-nature/600/400",
+      "esFavorito": false
+    }
+  ]
+}
