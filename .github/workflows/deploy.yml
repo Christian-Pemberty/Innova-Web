@@ -6,6 +6,9 @@ on:
       - felipe-mejoras
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install dependencies
@@ -31,3 +34,4 @@ jobs:
         with:
           folder: dist/innova/browser
           branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
